@@ -1,2 +1,8 @@
 *.pth
 __pycache__
+avsbench_data/*
+pretrained_backbones/*
+avs_scripts/avs_s4/train_logs/*
+avs_scripts/avs_ms3/train_logs/*
+outputs/*
+sub.cmd
