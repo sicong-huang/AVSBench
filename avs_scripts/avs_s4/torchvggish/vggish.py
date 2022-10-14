@@ -148,10 +148,10 @@ class VGGish(VGG):
             super().load_state_dict(state_dict)
             print(f'==> Load pretrained VGGish parameters from {cfg.TRAIN.PRETRAINED_VGGISH_MODEL_PATH}')
 
-        if device is None:
-            device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-            print("device: ", device)
-        self.device = device
+        # if device is None:
+        #     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        #     print("device: ", device)
+        # self.device = device
 
         self.preprocess = cfg.TRAIN.PREPROCESS_AUDIO_TO_LOG_MEL
         self.postprocess = cfg.TRAIN.POSTPROCESS_LOG_MEL_WITH_PCA
@@ -167,7 +167,7 @@ class VGGish(VGG):
                     state_dict[vggish_params.PCA_MEANS_NAME].reshape(-1, 1), dtype=torch.float
                 )
                 self.pproc.load_state_dict(state_dict)
-        self.to(self.device)
+        # self.to(self.device)
 
     def forward(self, x):
         if self.preprocess:
